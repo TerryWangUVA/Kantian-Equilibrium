@@ -3,7 +3,8 @@
     "allow": [
       "Bash(conda run:*)",
       "Bash(ls \"c:\\\\Projects\\\\狂言\\\\Kantian Equilibrium\\\\Code\"/*.png)",
-      "Bash(python -c \"import json; nb=json.load\\(open\\(''homo_moralis_simulation.ipynb''\\)\\); [print\\(i, c[''source''][:200]\\) for i,c in enumerate\\(nb[''cells'']\\) if ''float'' in c[''source''] or ''x_star'' in c[''source''] and ''sigma'' in c[''source'']]\")"
+      "Bash(python -c \"import json; nb=json.load\\(open\\(''homo_moralis_simulation.ipynb''\\)\\); [print\\(i, c[''source''][:200]\\) for i,c in enumerate\\(nb[''cells'']\\) if ''float'' in c[''source''] or ''x_star'' in c[''source''] and ''sigma'' in c[''source'']]\")",
+      "WebSearch"
     ]
   }
 }
