@@ -1,0 +1,62 @@
+Simulation Report Plan
+Paper: Alger & Weibull (2013), "Homo Moralis: Preference Evolution Under Incomplete
+       Information and Assortative Matching," Econometrica 81(6): 2269-2302.
+Date: 2026-03-15
+
+============================
+OVERVIEW
+============================
+
+The paper proves that when preferences are private information and matching is assortative
+(index sigma), the evolutionarily stable preference is "homo moralis" with Kantian
+coefficient kappa = sigma. This report focuses on the Prisoners' Dilemma to illustrate
+the core result, then uses evolutionary dynamics to show convergence to kappa = sigma.
+
+============================
+SIMULATION MODULES
+============================
+
+1. PRISONERS' DILEMMA EQUILIBRIUM (Section 4, Figure 1)
+   - Parameters: T=7, R=5, P=3, S=2 (as in paper)
+   - For each kappa in [0,1], compute homo moralis equilibrium cooperation level x(kappa):
+       x = 0          if kappa <= (P-S)/(T-P) = 0.25
+       x = x_hat(k)   if 0.25 < kappa < (T-R)/(R-S) = 0.667  [interior solution]
+       x = 1          if kappa >= 0.667
+     where x_hat(k) = [a12 + k*a21 - (1+k)*a22] / [(1+k)*(a12+a21-a11-a22)]
+   - Plot x(kappa) vs. kappa; mark the two threshold values
+   - For a given sigma, mark kappa=sigma on the plot to show the predicted ESS behavior
+
+2. EVOLUTIONARY DYNAMICS SIMULATION
+   - Population of types kappa drawn from [0,1]; each type plays PD at its homo moralis
+     equilibrium strategy x(kappa) against its matched opponent
+   - Matching: index of assortativity sigma (parameter to vary)
+   - Fitness of a type-kappa resident vs. rare mutant type-kappa':
+       Pi_resident = [1-eps+eps*sigma]*pi(x,x) + eps*(1-sigma)*pi(x,y)
+       Pi_mutant   = (1-eps)*(1-sigma)*pi(y,x) + [eps+(1-eps)*sigma]*pi(y,y)
+   - Replicator dynamics: update population share of each kappa proportional to fitness
+   - Run for several values of sigma (e.g., 0, 0.25, 0.5, 1)
+   - Show that the population converges to a spike at kappa = sigma in each case
+
+============================
+REPORT STRUCTURE
+============================
+
+1. Introduction — paper motivation, homo moralis concept, kappa = sigma result
+2. Model Setup — utility u_kappa(x,y) = (1-kappa)*pi(x,y) + kappa*pi(x,x),
+                  matching process, evolutionary stability
+3. The Prisoners' Dilemma — equilibrium cooperation as a function of kappa
+4. Evolutionary Dynamics — replicator simulation; convergence to kappa = sigma
+5. Conclusion — what the simulation confirms about the paper's main result
+
+============================
+TECHNICAL NOTES
+============================
+
+Language: Python (numpy, matplotlib)
+Key equations:
+  Homo moralis utility : u_kappa(x,y) = (1-kappa)*pi(x,y) + kappa*pi(x,x)
+  PD payoff matrix     : T=7, R=5, P=3, S=2
+  Interior cooperation : x_hat(k) = [a12+k*a21-(1+k)*a22] / [(1+k)*(a12+a21-a11-a22)]
+  Resident fitness     : Pi_res = [1-eps+eps*sigma]*pi(x,x) + eps*(1-sigma)*pi(x,y)
+  Mutant fitness       : Pi_mut = (1-eps)*(1-sigma)*pi(y,x) + [eps+(1-eps)*sigma]*pi(y,y)
+  Replicator update    : s_kappa(t+1) proportional to s_kappa(t) * Pi_kappa(t)
