@@ -22,11 +22,11 @@ The concave return structure (diminishing marginal returns) means there is a wel
 
 | Label | Type | Utility they maximise | Equilibrium contribution |
 |---|---|---|---|
-| **H** | Homo Oeconomicus | Own payoff $\pi(x, y)$ | $x_H^* = 1/3$ |
-| **K** | Homo Kantiensis | "What if everyone did this?" $\pi(x,x)$ | $x_K^* = 5/12 \approx 0.417$ |
-| **A** | Pure Altruist | Opponent's payoff $\pi(y,x)$ | $x_A^* = 1/2$ |
+| **H** | Homo Oeconomicus | Own payoff $\pi(x, y)$ | $x_H^{*} = 1/3$ |
+| **K** | Homo Kantiensis | "What if everyone did this?" $\pi(x,x)$ | $x_K^{*} = 5/12 \approx 0.417$ |
+| **A** | Pure Altruist | Opponent's payoff $\pi(y,x)$ | $x_A^{*} = 1/2$ |
 
-Ordering: $x_H^* < x_K^* = x_{\text{social}}^* < x_A^*$. The Kantian strategy is exactly the social optimum. The altruist overshoots it.
+Ordering: $x_H^{*} < x_K^{*} = x_{\text{social}}^{*} < x_A^{*}$. The Kantian strategy is exactly the social optimum. The altruist overshoots it.
 
 ### Equilibrium Note
 
@@ -38,11 +38,11 @@ Each type's equilibrium strategy is derived assuming they meet an opponent of th
 
 With assortativity index $\sigma \in [0,1]$, each agent meets a like-type partner with probability $\sigma$ and a random draw from the population otherwise. Fitness:
 
-$$f_i = \sigma \cdot \pi(x_i^*, x_i^*) + (1-\sigma) \sum_j s_j \cdot \pi(x_i^*, x_j^*)$$
+$$f_i = \sigma \cdot \pi(x_i^{*}, x_i^{*}) + (1-\sigma) \sum_j s_j \cdot \pi(x_i^{*}, x_j^{*})$$
 
 Population shares evolve via the standard replicator equation:
 
-$$s_i(t+1) = s_i(t) + s_i(t)\bigl(f_i(t) - \bar{f}(t)\bigr)$$
+$$s_i(t+1) = s_i(t) + s_i(t)(f_i(t) - \bar{f}(t))$$
 
 ---
 
@@ -58,9 +58,9 @@ $$s_i(t+1) = s_i(t) + s_i(t)\bigl(f_i(t) - \bar{f}(t)\bigr)$$
 
 ### Why altruism loses — always
 
-The altruist over-contributes ($x_A^* > x_{\text{soc}}^*$). In a game with diminishing returns, extra contribution beyond the social optimum costs more than it benefits anyone. This gives K a fitness advantage over A against *every* opponent type:
+The altruist over-contributes ($x_A^{*} > x_{\text{soc}}^{*}$). In a game with diminishing returns, extra contribution beyond the social optimum costs more than it benefits anyone. This gives K a fitness advantage over A against every opponent type:
 
-$$\pi(x_A^*, x_j^*) < \pi(x_K^*, x_j^*) \quad \forall\, j$$
+$$\pi(x_A^{*}, x_j^{*}) < \pi(x_K^{*}, x_j^{*}) \quad \forall\, j$$
 
 Altruism and social efficiency are not the same thing. Over-contribution is the symmetric mirror of free-riding — both deviate from the optimum in opposite directions.
 
